@@ -4,14 +4,10 @@ import SpotifyPlayer from 'react-spotify-web-playback'
 
 export default function Player({ accessToken, track }) {
     const [play, setPlay] = useState(false);
-    const [trackUri, setTrackUri] = useState([]);
 
     useEffect(() => {
-        track && setTrackUri([track.uri]);
         setPlay(true);
     }, [track]);
-
-    console.log(trackUri);
 
     if (!accessToken) return null;
     return (
@@ -21,11 +17,10 @@ export default function Player({ accessToken, track }) {
             callback={state => {
                 if (!state.isPlaying) {
                     setPlay(false);
-                    setTrackUri([]);
                 }
             }}
             play={play}
-            uris={trackUri}
+            uris={track? [track.uri] : []}
             styles={{
                 activeColor: '#fff',
                 bgColor: 'gray',
