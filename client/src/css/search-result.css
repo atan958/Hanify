@@ -52,7 +52,7 @@
 }
 
 .shaker {
-    animation: shake 4s;
+    animation: shake 10s;
     animation-iteration-count: infinite;
   }
   
@@ -75,13 +75,13 @@
 	height: 32px;
 	box-sizing: border-box;
 	overflow: hidden;
-	animation: float 1.5s ease-in-out infinite;
+	animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
 	0% {
 		filter:drop-shadow(0px 25px 15px rgba(30,215,96,0.4));
-		transform: translate(5px,-10px);
+		transform: translate(3px,-5px);
 	}
 	25% {
 		filter:drop-shadow(0px 5px 15px rgba(30,215,96,1));
@@ -89,7 +89,7 @@
 	}
 	50% {
 		filter:drop-shadow(0px 25px 15px rgba(30,215,96,0.4));
-		transform: translate(-5px,-10px);
+		transform: translate(-3px,-5px);
 	}
 	75% {
 		filter:drop-shadow(0px 5px 15px rgba(30,215,96,1));
@@ -97,7 +97,7 @@
 	}
 	100% {
 		filter:drop-shadow(0px 25px 15px rgba(30,215,96,0.4));
-		transform: translate(5px,-10px);
+		transform: translate(3px,-5px);
 	}
 }
 

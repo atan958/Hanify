@@ -160,10 +160,10 @@ export default function Dashboard({ code }) {
                     setSearch(e.target.value) 
                 }} 
             />
-            <div className="flex-grow-1 my-2" style={{ overflowY: "auto", overflowX: "hidden", backgroundColor: '#1DB954' }}>
+            <div className="flex-grow-1 my-2" style={{ overflowY: "auto", overflowX: "hidden", backgroundColor: 'white' }}>
                 {renderResults()}
                 {(searchResults.length === 0) && (
-                    <div className="text-center" style={{ whiteSpace: "pre" }}>
+                    <div className="text-center py-4" style={{ whiteSpace: "pre" }}>
                         {lyrics.map((line, index) =>{
                             return (
                                 <div className="lyric-line highlight" style={{ animationDuration: `${index*0.1}s` }}>
@@ -176,7 +176,7 @@ export default function Dashboard({ code }) {
                 )}
             </div>
             <div>
-                <Player accessToken={accessToken} trackUri={playingTrack?.uri}/>
+                <Player accessToken={accessToken} track={playingTrack}/>
             </div>
         </Container>
     )

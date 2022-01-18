@@ -20,7 +20,7 @@ export default function TrackSearchResult({ track, chooseTrack, clearSearch }) {
                 <>
                 <div className="position-absolute end-0 shaker" style={{ marginRight: '30px' }}>
                     <div className="avatar">
-                        Hi
+                        <img src={require('./assets/musical-note.png')} />
                     </div>
                 </div>
                 <div className="show-lyrics-btn show-lyrics-btn-text-centered" onClick={clearSearch}>LYRICS</div>
