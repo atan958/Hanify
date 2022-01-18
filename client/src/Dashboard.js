@@ -151,7 +151,7 @@ export default function Dashboard({ code }) {
     }
 
     return (
-        <Container className="d-flex flex-column py-4" style={{ height: '100vh' }}>
+        <Container className="d-flex flex-column py-4 bg-dark" style={{ height: '100vh' }}>
             <Form.Control 
                 type="search" 
                 placeholder="Search Songs/Artists" 
@@ -160,7 +160,7 @@ export default function Dashboard({ code }) {
                     setSearch(e.target.value) 
                 }} 
             />
-            <div className="flex-grow-1 my-2" style={{ overflowY: "auto", overflowX: "hidden" }}>
+            <div className="flex-grow-1 my-2" style={{ overflowY: "auto", overflowX: "hidden", backgroundColor: '#1DB954' }}>
                 {renderResults()}
                 {(searchResults.length === 0) && (
                     <div className="text-center" style={{ whiteSpace: "pre" }}>

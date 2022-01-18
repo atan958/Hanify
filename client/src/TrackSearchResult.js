@@ -16,7 +16,16 @@ export default function TrackSearchResult({ track, chooseTrack, clearSearch }) {
                 <div>{track.title}</div>
                 <div className="text-muted">{track.artist}</div>
             </div>
-            {track.playing && <div className="show-lyrics-btn show-lyrics-btn-text-centered" onClick={clearSearch}>LYRICS</div>}
+            {track.playing && (
+                <>
+                <div className="position-absolute end-0 shaker" style={{ marginRight: '30px' }}>
+                    <div className="avatar">
+                        Hi
+                    </div>
+                </div>
+                <div className="show-lyrics-btn show-lyrics-btn-text-centered" onClick={clearSearch}>LYRICS</div>
+                </>
+            )} 
         </div>
     )
 }
