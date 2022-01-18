@@ -4,8 +4,8 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import axios from 'axios'
 
 import useAuth from '../login/useAuth'
-import TrackSearchResult from '../../../TrackSearchResult'
-import Player from '../../../Player'
+import TrackSearchResult from './TrackSearchResult'
+import Player from './Player'
 
 import '../../../css/dashboard.css'
 
