@@ -1,0 +1,52 @@
+.show-lyrics-btn {
+    position: absolute;
+    right: -35%;
+    
+    height: 100%;
+    width: 25%;
+
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+
+    color: white;
+
+    background-color: green; 
+
+    overflow: hidden;
+    transition: 0.8s ease;
+}
+
+.show-lyrics-btn:hover {
+    transition: 0.5s ease;
+    border-left: 2px solid black;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.show-lyrics-btn-text-centered {
+    line-height: 500%;
+    text-align: center;
+}
+
+.show-lyrics-btn:active {
+    transition: 0s ease;
+    border-left: 4px solid black;
+}
+
+.result-container-selected {
+    position: relative !important;
+}
+
+.result-container-selected:hover .show-lyrics-btn {
+    right: 0%;
+}
+
+.result-container {
+    transition: 0.8s ease;
+    position: relative !important;
+}
+
+.result-container:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+}
