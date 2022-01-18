@@ -58,8 +58,6 @@ export default function useAuth(code) {
         });
     }, [refreshToken, expiresIn]);
 
-
-
     /*
     / Note: Access Token only lasts an hour
     */

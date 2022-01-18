@@ -19,7 +19,12 @@ export default function Dashboard({ code }) {
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [playingTrack, setPlayingTrack] = useState();
-    const [lyrics, setLyrics] = useState([]); console.log(lyrics);
+    const [lyrics, setLyrics] = useState([]);
+
+    const [showNavBar, setShowNavBar] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
+    const [showHome, setShowHome] = useState(true);
+    const [showLyrics, setShowLyrics] = useState(false);
 
     /*
     / Acquires the lyrics for the currently playing track
@@ -42,13 +47,6 @@ export default function Dashboard({ code }) {
     }, [playingTrack]);
 
     /*
-    / Helper Method: Separates the lyrics into their own divs
-    */
-    const splitLyricsByLine = (lyrics) => {
-        return lyrics.split("\n");
-    }
-
-    /*
     / Acquires the current User's profile information
     */
     useEffect(() => {
@@ -68,13 +66,12 @@ export default function Dashboard({ code }) {
     }, [accessToken]);
 
     /*
-    /
+    / Sets the Access Token whenever useAuth hook produces output
     */
     useEffect(() => {
         if (!accessToken) return;
         spotifyApi.setAccessToken(accessToken);
     }, [accessToken]);
-
 
     /*
     / 
@@ -162,26 +159,62 @@ export default function Dashboard({ code }) {
     /
     */
     const clearSearch = () => {
+        setShowLyrics(true);
+        setShowHome(false);
+        setShowProfile(false);
+        setSearch("");
+    }
+
+    const displayHome = () => {
+        setShowLyrics(false);
+        setShowHome(true);
+        setShowProfile(false);
+        setSearch("");
+    }
+
+    const displayProfile = () => {
+        setShowLyrics(false);
+        setShowHome(false);
+        setShowProfile(true);
         setSearch("");
     }
 
     return (
         <Container className="d-flex flex-column py-4 content-container-container-bg" style={{ height: '100vh' }}>
-            <Form.Control 
-                type="search" 
-                placeholder="Search Songs/Artists" 
-                value={search} 
-                onChange={(e) => { 
-                    setSearch(e.target.value) 
-                }} 
-            />
+            <div className="nav-bar-container" onMouseOver={() => { setShowNavBar(true) }} onMouseLeave={() => { setShowNavBar(false) }}>
+                <Form.Control 
+                    type="search" 
+                    placeholder="Search Songs/Artists" 
+                    value={search} 
+                    onChange={(e) => { 
+                        setSearch(e.target.value) 
+                    }} 
+                />
+                {showNavBar && 
+                    <div className="btn-group fade-in-anm">
+                        <div className="bg-info mx-2 my-3 nav-btn" onClick={displayHome}>Home</div>
+                        <div className="bg-info mx-2 my-3 nav-btn" onClick={displayProfile}>Profile</div>
+                        <div className="bg-info mx-2 my-3 nav-btn" onClick={clearSearch}> Lyrics</div>
+                    </div>
+                }
+            </div>
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
-                {(searchResults.length === 0) && (renderLyrics())}
+                {(showLyrics && searchResults.length === 0) && (renderLyrics())}
+                {(showProfile && searchResults.length === 0) && <div>Bip Bop</div>}
+                {(showHome && searchResults.length === 0) && <div>Boop Boop</div>}
             </div>
             <div>
                 <Player accessToken={accessToken} track={playingTrack} />
             </div>
         </Container>
     )
+}
+
+
+/*
+/ Helper Method: Separates the lyrics into their own divs
+*/
+const splitLyricsByLine = (lyrics) => {
+    return lyrics.split("\n");
 }

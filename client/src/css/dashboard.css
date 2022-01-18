@@ -13,8 +13,39 @@
 
 .content-container-bg {
     color: black;
-
     background-color: rgb(255, 210, 216);
     background: rgb(248,135,255);
-background: linear-gradient(90deg, rgba(248,135,255,1) 0%, rgba(239,205,255,1) 49%, rgba(187,145,255,1) 100%);
+    background: linear-gradient(90deg, rgba(248,135,255,1) 0%, rgba(239,205,255,1) 49%, rgba(187,145,255,1) 100%);
 }
+
+.nav-bar-container {
+    position: relative;
+    transition: 2s ease;
+}
+
+.nav-btn {
+    background-color: #04AA6D; /* Green background */
+    border: 1px solid green; /* Green border */
+    border-radius: 5px;
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+
+    width: calc(100%/3);
+    text-align: center;
+  }
+
+  .nav-btn:hover {
+  }
+  
+  .btn-group {
+      width: 100%;
+      position: relative;
+      position: absolute;
+      z-index: 1;
+      background-color: black;
+
+      transition: 2s ease;
+  }
+ 
