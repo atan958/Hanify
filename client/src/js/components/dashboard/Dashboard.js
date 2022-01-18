@@ -3,11 +3,11 @@ import { Container, Form } from 'react-bootstrap'
 import SpotifyWebApi from 'spotify-web-api-node'
 import axios from 'axios'
 
-import useAuth from './useAuth'
-import TrackSearchResult from './TrackSearchResult'
-import Player from './Player'
+import useAuth from '../../../useAuth'
+import TrackSearchResult from '../../../TrackSearchResult'
+import Player from '../../../Player'
 
-import './css/dashboard.css'
+import '../../../css/dashboard.css'
 
 const spotifyApi = new SpotifyWebApi({
     clientId: 'f4ac31f857c64234a172c74f9bd21cb8',
@@ -42,7 +42,7 @@ export default function Dashboard({ code }) {
     }, [playingTrack]);
 
     /*
-    /
+    / Helper Method: Separates the lyrics into their own divs
     */
     const splitLyricsByLine = (lyrics) => {
         return lyrics.split("\n");
@@ -130,6 +130,21 @@ export default function Dashboard({ code }) {
         });
     }
 
+    const renderLyrics = () => {
+        return (
+            <div className="text-center py-4" style={{ whiteSpace: "pre" }}>
+                {lyrics.map((line, index) =>{
+                    return (
+                        <div className="lyric-line highlight" style={{ animationDuration: `${index*0.1}s` }}>
+                            {line}
+                            <br/>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
+
     /*
     / Sets the track which cs current playing on the Player component
     */
@@ -162,21 +177,10 @@ export default function Dashboard({ code }) {
             />
             <div className="flex-grow-1 my-2" style={{ overflowY: "auto", overflowX: "hidden", backgroundColor: 'white' }}>
                 {renderResults()}
-                {(searchResults.length === 0) && (
-                    <div className="text-center py-4" style={{ whiteSpace: "pre" }}>
-                        {lyrics.map((line, index) =>{
-                            return (
-                                <div className="lyric-line highlight" style={{ animationDuration: `${index*0.1}s` }}>
-                                    {line}
-                                    <br/>
-                                </div>
-                            );
-                        })}
-                    </div>
-                )}
+                {(searchResults.length === 0) && (renderLyrics())}
             </div>
             <div>
-                <Player accessToken={accessToken} track={playingTrack}/>
+                <Player accessToken={accessToken} track={playingTrack} />
             </div>
         </Container>
     )

@@ -6,7 +6,7 @@ export default function Player({ accessToken, track }) {
     const [play, setPlay] = useState(false);
 
     useEffect(() => {
-        setPlay(true);
+        if (track) setPlay(true);
     }, [track]);
 
     if (!accessToken) return null;
