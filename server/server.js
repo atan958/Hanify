@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const lyricsFinder = require('lyrics-finder');
 
 /*
-/ https://github.com/thelinmichael/spotify-web-api-node
+/ Library: https://github.com/thelinmichael/spotify-web-api-node
 */
 const SpotifyWebApi = require('spotify-web-api-node');
 
@@ -76,8 +76,6 @@ app.get('/lyrics', async (req, res) => {
         lyrics
     });
 });
-
-
 
 /*
 / The server's base URL would be https://localhost:3001

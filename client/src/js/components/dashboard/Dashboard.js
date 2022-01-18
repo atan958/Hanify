@@ -3,7 +3,7 @@ import { Container, Form } from 'react-bootstrap'
 import SpotifyWebApi from 'spotify-web-api-node'
 import axios from 'axios'
 
-import useAuth from '../../../useAuth'
+import useAuth from '../login/useAuth'
 import TrackSearchResult from '../../../TrackSearchResult'
 import Player from '../../../Player'
 
@@ -166,7 +166,7 @@ export default function Dashboard({ code }) {
     }
 
     return (
-        <Container className="d-flex flex-column py-4 bg-dark" style={{ height: '100vh' }}>
+        <Container className="d-flex flex-column py-4 content-container-container-bg" style={{ height: '100vh' }}>
             <Form.Control 
                 type="search" 
                 placeholder="Search Songs/Artists" 
@@ -175,7 +175,7 @@ export default function Dashboard({ code }) {
                     setSearch(e.target.value) 
                 }} 
             />
-            <div className="flex-grow-1 my-2" style={{ overflowY: "auto", overflowX: "hidden", backgroundColor: 'white' }}>
+            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(searchResults.length === 0) && (renderLyrics())}
             </div>

@@ -7,7 +7,7 @@ export default function TrackSearchResult({ track, chooseTrack, clearSearch }) {
     
     return (
         <div 
-            className={`d-flex m-2 align-items-center result-container ${track.playing && 'result-container-selected bg-light'}`}
+            className={`d-flex m-2 align-items-center fade-in-anm result-container ${track.playing && 'result-container-selected'}`}
             style={{ cursor: 'pointer'}}
             onClick={handlePlay}    
         >

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function useAuth(code) {
@@ -22,7 +22,7 @@ export default function useAuth(code) {
                 /*
                 / Removes the client id string from the logged-in URL
                 */
-                window.history.pushState({}, null, '/')
+                //window.history.pushState({}, null, '/')
             })
             .catch(() => {
                 window.location = '/'
