@@ -6,6 +6,8 @@ import axios from 'axios'
 import useAuth from '../login/useAuth'
 import TrackSearchResult from './TrackSearchResult'
 import Player from './Player'
+import Home from './Home'
+import Profile from './Profile'
 
 import '../../../css/dashboard.css'
 
@@ -192,17 +194,23 @@ export default function Dashboard({ code }) {
                 />
                 {showNavBar && 
                     <div className="btn-group fade-in-anm">
-                        <div className="bg-info mx-2 my-3 nav-btn" onClick={displayHome}>Home</div>
-                        <div className="bg-info mx-2 my-3 nav-btn" onClick={displayProfile}>Profile</div>
-                        <div className="bg-info mx-2 my-3 nav-btn" onClick={clearSearch}> Lyrics</div>
+                        <div className="mx-2 my-3 nav-btn" onClick={displayHome}>
+                            <img src={require('../../../assets/home.png')} className="nav-img"/>
+                        </div>
+                        <div className="mx-2 my-3 nav-btn" onClick={displayProfile}>
+                        <img src={require('../../../assets/user.png')} className="nav-img"/>
+                        </div>
+                        <div className="mx-2 my-3 nav-btn" onClick={clearSearch}>
+                            <img src={require('../../../assets/song-lyrics.png')} className="nav-img"/>
+                        </div>
                     </div>
                 }
             </div>
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(showLyrics && searchResults.length === 0) && (renderLyrics())}
-                {(showProfile && searchResults.length === 0) && <div>Bip Bop</div>}
-                {(showHome && searchResults.length === 0) && <div>Boop Boop</div>}
+                {(showProfile && searchResults.length === 0) && <Profile />}
+                {(showHome && searchResults.length === 0) && <Home />}
             </div>
             <div>
                 <Player accessToken={accessToken} track={playingTrack} />

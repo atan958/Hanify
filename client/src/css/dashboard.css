@@ -23,6 +23,15 @@
     transition: 2s ease;
 }
 
+.btn-group {
+    width: 100%;
+    position: relative;
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    transition: 2s ease;
+}
+
 .nav-btn {
     background-color: #04AA6D; /* Green background */
     border: 1px solid green; /* Green border */
@@ -34,18 +43,17 @@
 
     width: calc(100%/3);
     text-align: center;
+
+    transition: 0.2s ease;
   }
 
   .nav-btn:hover {
+    background-color: #048a59; /* Green background */
+  }
+
+  .nav-btn:hover .nav-img{
+    filter: brightness(0) invert(1);
   }
   
-  .btn-group {
-      width: 100%;
-      position: relative;
-      position: absolute;
-      z-index: 1;
-      background-color: black;
 
-      transition: 2s ease;
-  }
  
