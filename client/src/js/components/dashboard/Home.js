@@ -1,7 +1,8 @@
-const Home = () => {
+const Home = ({ userId }) => {
+    console.log(userId);
     return (
         <div>
-            
+            {userId}
         </div>
     )
 }

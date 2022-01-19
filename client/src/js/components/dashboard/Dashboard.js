@@ -62,6 +62,7 @@ export default function Dashboard({ code }) {
                 } 
             });
             const data = res.data;
+            console.log(data);
             setUserInfo(data);
         }
         retrieveUserInfo();
@@ -209,8 +210,8 @@ export default function Dashboard({ code }) {
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(showLyrics && searchResults.length === 0) && (renderLyrics())}
-                {(showProfile && searchResults.length === 0) && <Profile />}
-                {(showHome && searchResults.length === 0) && <Home />}
+                {(showProfile && searchResults.length === 0) && <Profile userInfo={userInfo}/>}
+                {(showHome && searchResults.length === 0) && <Home userId={userInfo?.id}/>}
             </div>
             <div>
                 <Player accessToken={accessToken} track={playingTrack} />

@@ -1,7 +1,7 @@
-const Profile = () => {
+const Profile = ({ userInfo }) => {
     return (
         <div>
-            
+            {userInfo.display_name}
         </div>
     )
 }
