@@ -17,7 +17,6 @@ const spotifyApi = new SpotifyWebApi({
 
 export default function Dashboard({ code }) {
     const accessToken = useAuth(code);
-    const [userInfo, setUserInfo] = useState();
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [playingTrack, setPlayingTrack] = useState();
@@ -48,25 +47,7 @@ export default function Dashboard({ code }) {
         });
     }, [playingTrack]);
 
-    /*
-    / Acquires the current User's profile information
-    */
-    useEffect(() => {
-        if(!accessToken) return;
-        const retrieveUserInfo = async () => {
-            const res = await axios.get('https://api.spotify.com/v1/me', { 
-                headers: {
-                    'Accept' : 'application/json',
-                    'Content-Type' : 'application/json',
-                    'Authorization' : `Bearer ${accessToken}`
-                } 
-            });
-            const data = res.data;
-            console.log(data);
-            setUserInfo(data);
-        }
-        retrieveUserInfo();
-    }, [accessToken]);
+
 
     /*
     / Sets the Access Token whenever the useAuth hook produces output
@@ -208,8 +189,8 @@ export default function Dashboard({ code }) {
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
-                {(showProfile && searchResults.length === 0) && <Profile userInfo={userInfo}/>}
-                {(showHome && searchResults.length === 0) && <Home userId={userInfo?.id}/>}
+                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken}/>}
+                {(showHome && searchResults.length === 0) && <Home />}
             </div>
             <div>
                 <Player accessToken={accessToken} track={playingTrack} />

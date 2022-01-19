@@ -1,7 +1,7 @@
 import '../../../css/home.css'
 import useSpotifyGroups from './useSpotifyGroups'
 
-const Home = ({ userId }) => {
+const Home = () => {
     const spotifyGroups = useSpotifyGroups();
     console.log('Inside Home');
     console.log(spotifyGroups);

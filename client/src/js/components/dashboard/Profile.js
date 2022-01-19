@@ -1,7 +1,11 @@
-const Profile = ({ userInfo }) => {
+import useUserInfo from "./useUserInfo"
+
+const Profile = ({ accessToken }) => {
+    const userInfo = useUserInfo(accessToken);
+
     return (
         <div>
-            {userInfo.display_name}
+            {userInfo?.display_name}
         </div>
     )
 }
