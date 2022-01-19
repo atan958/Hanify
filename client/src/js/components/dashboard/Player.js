@@ -6,6 +6,8 @@ export default function Player({ accessToken, track }) {
     const [play, setPlay] = useState(false);
 
     useEffect(() => {
+        console.log('Track changed');
+        console.log(track);
         if (track) setPlay(true);
     }, [track]);
 

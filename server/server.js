@@ -1,12 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
 const lyricsFinder = require('lyrics-finder');
-
-/*
-/ Library: https://github.com/thelinmichael/spotify-web-api-node
-*/
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const app = express();

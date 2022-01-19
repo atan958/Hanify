@@ -69,7 +69,7 @@ export default function Dashboard({ code }) {
     }, [accessToken]);
 
     /*
-    / Sets the Access Token whenever useAuth hook produces output
+    / Sets the Access Token whenever the useAuth hook produces output
     */
     useEffect(() => {
         if (!accessToken) return;
@@ -154,12 +154,10 @@ export default function Dashboard({ code }) {
         });
         track.playing = true;
         setPlayingTrack(track);
-        // setSearch("");
-        // setLyrics([]);
     }
 
     /*
-    /
+    / 
     */
     const clearSearch = () => {
         setShowLyrics(true);
@@ -209,7 +207,7 @@ export default function Dashboard({ code }) {
             </div>
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
-                {(showLyrics && searchResults.length === 0) && (renderLyrics())}
+                {(showLyrics && searchResults.length === 0) && (lyrics.length === 0) ? 'No Song Selected' : (renderLyrics())}
                 {(showProfile && searchResults.length === 0) && <Profile userInfo={userInfo}/>}
                 {(showHome && searchResults.length === 0) && <Home userId={userInfo?.id}/>}
             </div>

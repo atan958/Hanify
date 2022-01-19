@@ -13,28 +13,8 @@ const useSpotifyGroups = () => {
             setSpotifyGroups(data);
         }
         retrieveSpotifyGroups();
-    });
+    }, []);
     return spotifyGroups;
 };
 
 export default useSpotifyGroups;
-
-
-/*
-const HanifyApiUrl = 'https://localhost:5001/spotifygroups';
-
-app.get('/spotifygroups', async (req, res) => {
-    console.log('Made it Here');
-    const hanifyApiRes = await axios.get(HanifyApiUrl,{
-        headers: {
-            'Accept' : 'application/json',
-            'Content-Type' : 'application/json'
-        }
-    });
-    const spotifyGroups = hanifyApiRes.data;
-    console.log('I got here');
-    res.json({
-        spotifyGroups
-    })
-});
-*/
