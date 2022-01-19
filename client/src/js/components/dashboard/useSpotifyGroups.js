@@ -10,9 +10,9 @@ const useSpotifyGroups = () => {
         const retrieveSpotifyGroups = async () => {
             const res = await axios.get(HanifyApiUrl);
             const data = res.data;
-            console.log(data);
+            setSpotifyGroups(data);
         }
-        //retrieveSpotifyGroups();
+        retrieveSpotifyGroups();
     });
     return spotifyGroups;
 };
