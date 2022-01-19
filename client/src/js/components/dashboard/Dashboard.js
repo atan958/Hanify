@@ -207,7 +207,7 @@ export default function Dashboard({ code }) {
             </div>
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
-                {(showLyrics && searchResults.length === 0) && (lyrics.length === 0) ? 'No Song Selected' : (renderLyrics())}
+                {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
                 {(showProfile && searchResults.length === 0) && <Profile userInfo={userInfo}/>}
                 {(showHome && searchResults.length === 0) && <Home userId={userInfo?.id}/>}
             </div>
