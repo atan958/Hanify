@@ -1,11 +1,11 @@
-import useUserInfo from "./useUserInfo"
+import useUserProfile from "./useUserProfile"
 
 const Profile = ({ accessToken }) => {
-    const userInfo = useUserInfo(accessToken);
-
+    const userProfile = useUserProfile(accessToken);
+    console.log(userProfile);
     return (
         <div>
-            {userInfo?.display_name}
+            {userProfile?.display_name}
         </div>
     )
 }

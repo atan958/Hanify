@@ -5,7 +5,7 @@ import axios from 'axios'
 const useUserInfo = (accessToken) => {
     const [userInfo, setUserInfo] = useState();
 
-        /*
+    /*
     / Acquires the current User's profile information
     */
     useEffect(() => {

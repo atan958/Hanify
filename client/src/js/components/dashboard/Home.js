@@ -3,8 +3,6 @@ import useSpotifyGroups from './useSpotifyGroups'
 
 const Home = () => {
     const spotifyGroups = useSpotifyGroups();
-    console.log('Inside Home');
-    console.log(spotifyGroups);
 
     return (
         <div className="home-container">
@@ -40,7 +38,7 @@ const SpotifyGroupDisplays = ({ groups }) => {
         );
     });
     return (
-            <div className="group-display-container-container">
+            <div className="group-display-container-container fade-in-anm">
                 {groupDisplays}
             </div>
     );
