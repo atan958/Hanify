@@ -54,7 +54,7 @@ export default function Dashboard({ code }) {
     useEffect(() => {
         if(!accessToken) return;
         const retrieveUserInfo = async () => {
-            const res = await axios.get('	https://api.spotify.com/v1/me', { 
+            const res = await axios.get('https://api.spotify.com/v1/me', { 
                 headers: {
                     'Accept' : 'application/json',
                     'Content-Type' : 'application/json',

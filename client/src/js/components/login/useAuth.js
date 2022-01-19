@@ -44,7 +44,7 @@ export default function useAuth(code) {
                 setExpiresIn({ value: res.data.expiresIn });
 
                 /*
-                / Removes the client id from the logged-in URL
+                / Removes the code from the web URL after logging in
                 */
                 window.history.pushState({}, null, '/')
             })

@@ -12,6 +12,7 @@
 }
 
 .content-container-bg {
+    position: relative;
     color: black;
     background-color: rgb(255, 210, 216);
     background: rgb(248,135,255);
