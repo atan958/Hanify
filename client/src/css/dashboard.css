@@ -14,8 +14,7 @@
 .content-container-bg {
     position: relative;
     color: black;
-    background: rgb(248,135,255);
-    background: linear-gradient(90deg, rgb(113, 121, 126) 0%, rgb(235, 235, 235) 49%, rgb(113, 121, 126) 100%);
+    background: linear-gradient(90deg, rgb(113, 121, 126) 0%, rgb(209, 209, 209) 49%, rgb(113, 121, 126) 100%);
 }
 
 .nav-bar-container {

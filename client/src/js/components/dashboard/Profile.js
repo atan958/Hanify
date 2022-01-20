@@ -16,21 +16,24 @@ const Profile = ({ accessToken, choosePlaylistTrack }) => {
         setShowPlaylistContent(true);
     }
 
+    const renderPlaylistDisplays = () => {
+        return userPlaylists.map((playlist) => {
+            return (
+                <PlaylistDisplay 
+                    playlist={playlist} 
+                    displayPlaylistContent={displayPlaylistContent}
+                />
+            );
+        })
+    }
+
     console.log(userProfile);
     return (
         <div>
             {userProfile && <ProfileAvatar userProfile={userProfile}/>}
             {showPlaylistContent && <PlaylistContent hideContent={() => setShowPlaylistContent(false)} selectedPlaylist={selectedPlaylist} accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
             {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
-            {userPlaylists?.map((playlist) => {
-                const playlistImg = <img src={playlist.images[0].url} width={64} height={64}/>
-                return (
-                    <div className="fade-in-anm playlist-display my-1" 
-                        onClick={() => displayPlaylistContent(playlist)}>
-                        {playlistImg}{playlist.name}
-                    </div>
-                );
-            })}
+            {userPlaylists && renderPlaylistDisplays()}
         </div>
     )
 }
@@ -65,6 +68,16 @@ const ProfileAvatar = ({ userProfile }) => {
         <div className="profile-avatar-name ">
             {userProfile?.display_name}
         </div>
+    </div>
+    );
+}
+
+const PlaylistDisplay = ({ playlist, displayPlaylistContent }) => {
+    const playlistImg = <img src={playlist.images[0].url} width={64} height={64}/>
+    return(
+    <div className="fade-in-anm playlist-display my-1" 
+        onClick={() => displayPlaylistContent(playlist)}>
+        {playlistImg}{playlist.name}
     </div>
     );
 }

@@ -37,7 +37,7 @@
 }
 
 .overlay-content-bg {
-  background: linear-gradient(90deg, green 0%, rgb(143, 143, 143) 50%, green 100%);
+  background: linear-gradient(90deg, rgb(113, 121, 126) 0%, rgb(209, 209, 209) 49%, rgb(113, 121, 126) 100%);
 }
 
 /*------------------------------------------------------------------------------------*/
