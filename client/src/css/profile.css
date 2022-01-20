@@ -18,9 +18,11 @@
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-    width: 128px;
-    height: 128px;
+    width: 640px;
+    height: 640px;
     background-color: white;
+    z-index:2;
+    overflow: auto;
   }
 
   
