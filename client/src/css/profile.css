@@ -101,6 +101,14 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+  width: 200px;
+  z-index: 2;
+  transition: 0.5s ease;
+}
+
+.hide-avatar {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .profile-avatar {
@@ -114,7 +122,6 @@
 	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 	transform: translatey(0px);
   margin: auto;
-
 
 	animation: profile-avatar-float 6s ease-in-out infinite;
 }
@@ -147,4 +154,9 @@
   width: 100%;
   text-align: center;
   font-weight: bold;
+}
+
+
+.playlist-display {
+  cursor: pointer;
 }
