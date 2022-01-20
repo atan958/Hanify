@@ -10,6 +10,7 @@
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
 }
+/*------------------------------------------------------------------------------------*/
 .wow-container {
   position: absolute;
   top: 50%;
@@ -35,6 +36,13 @@
   padding: 45px 55px 50px 10px;
 }
 
+.overlay-content-bg {
+  background: rgb(248,135,255);
+  background: linear-gradient(90deg, rgb(197, 135, 255) 0%, rgba(239,205,255,1) 49%, rgba(187,145,255,1) 100%);
+}
+
+/*------------------------------------------------------------------------------------*/
+
 .overlay-content-control-bar {
   position: absolute;
   top: 0;
@@ -45,11 +53,6 @@
   color: white;
   z-index: 10;
   border-bottom: 3px solid black;
-}
-
-.other {
-  background: rgb(248,135,255);
-  background: linear-gradient(90deg, rgb(197, 135, 255) 0%, rgba(239,205,255,1) 49%, rgba(187,145,255,1) 100%);
 }
 
 .overlay-playlist-title {
@@ -73,6 +76,8 @@
     color: rgb(230, 0, 0);
 }
 
+/*------------------------------------------------------------------------------------*/
+
 .playlist-item {
     background-color:white;
     transition: 0.3s ease;
@@ -81,4 +86,65 @@
 
 .playlist-item:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.27);
+}
+
+/*------------------------------------------------------------------------------------*/
+
+.profile-avatar-container {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+}
+
+.profile-avatar {
+  position: relative;
+	width: 150px;
+	height: 150px;
+	box-sizing: border-box;
+	border: 5px white solid;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+	transform: translatey(0px);
+  margin: auto;
+
+
+	animation: profile-avatar-float 6s ease-in-out infinite;
+}
+
+@keyframes profile-avatar-float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.profile-avatar-img {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.profile-avatar-name {
+  margin-top: 10px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
 }

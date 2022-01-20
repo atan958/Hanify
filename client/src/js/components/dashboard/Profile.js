@@ -11,19 +11,22 @@ const Profile = ({ accessToken, choosePlaylistTrack }) => {
     const [selectedPlaylist, setSelectedPlaylist] = useState();
     const [showPlaylistContent, setShowPlaylistContent] = useState(false);
 
+    const displayPlaylistContent = (playlist) => {
+        setSelectedPlaylist(playlist);
+        setShowPlaylistContent(true);
+    }
+
     console.log(userProfile);
     return (
         <div>
+            {userProfile && <ProfileAvatar userProfile={userProfile}/>}
             {showPlaylistContent && <PlaylistContent hideContent={() => setShowPlaylistContent(false)} selectedPlaylist={selectedPlaylist} accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
             {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
-            {userProfile?.display_name}
             {userPlaylists?.map((playlist) => {
                 const playlistImg = <img src={playlist.images[0].url} width={64} height={64}/>
                 return (
-                    <div onClick={() => {
-                        setSelectedPlaylist(playlist);
-                        setShowPlaylistContent(true);
-                        }}>
+                    <div className="fade-in-anm" 
+                        onClick={() => displayPlaylistContent(playlist)}>
                         {playlistImg}{playlist.name}
                     </div>
                 );
@@ -41,5 +44,18 @@ const PlaylistsLoading = () => {
             <div/><div/><div/>
         </div>
     </div>
+    );
+}
+
+const ProfileAvatar = ({ userProfile }) => {
+    return (
+        <div className="profile-avatar-container fade-in-anm align-items-center">
+            <div className="profile-avatar">
+                    <img className="profile-avatar-img" src="https://www.computerhope.com/jargon/g/guest-user.jpg" alt="Skytsunami" />
+            </div>
+            <div className="profile-avatar-name">
+                {userProfile?.display_name}
+            </div>
+        </div>
     );
 }
