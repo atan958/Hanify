@@ -155,9 +155,26 @@
   font-weight: bold;
 }
 
+.playlist-displays-container {
+  position: absolute;
+  bottom: 0;
 
-.playlist-display {
+  background-color: green;
+  overflow: auto;
+  width: 100%;
+  border-top: 5px solid black;
+}
+
+.playlist-display-container {
   cursor: pointer;
   background-color: black;
   color: white;
+  display: inline-block;
+  text-align: center;
+  width: 158px;
+  height: 200px;
+}
+
+.playlist-display-name {
+  margin: 10px 0px 0px 0px;
 }

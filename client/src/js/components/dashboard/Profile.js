@@ -33,7 +33,11 @@ const Profile = ({ accessToken, choosePlaylistTrack }) => {
             {userProfile && <ProfileAvatar userProfile={userProfile}/>}
             {showPlaylistContent && <PlaylistContent hideContent={() => setShowPlaylistContent(false)} selectedPlaylist={selectedPlaylist} accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
             {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
-            {userPlaylists && renderPlaylistDisplays()}
+            {userPlaylists && 
+                <div className="playlist-displays-container flex-row d-inline-flex">
+                    {renderPlaylistDisplays()}
+                </div>
+                }
         </div>
     )
 }
@@ -73,11 +77,16 @@ const ProfileAvatar = ({ userProfile }) => {
 }
 
 const PlaylistDisplay = ({ playlist, displayPlaylistContent }) => {
-    const playlistImg = <img src={playlist.images[0].url} width={64} height={64}/>
+    const playlistImg = <img src={playlist.images[0].url} width={128} height={128}/>
     return(
-    <div className="fade-in-anm playlist-display my-1" 
+    <div className="fade-in-anm playlist-display-container m-3 p-3" 
         onClick={() => displayPlaylistContent(playlist)}>
-        {playlistImg}{playlist.name}
+        <div>
+            {playlistImg}
+        </div>
+        <div className="playlist-display-name">
+            {playlist.name}
+        </div>
     </div>
     );
 }

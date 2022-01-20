@@ -31,7 +31,7 @@ export default function Player({ accessToken, track }) {
                 sliderColor: '#1e90ff',
                 sliderTrackColor: '#b0c4de',
                 trackArtistColor: '#ccc',
-                trackNameColor: 'black',
+                trackNameColor: 'white',
               }}
             style={{
             }}
