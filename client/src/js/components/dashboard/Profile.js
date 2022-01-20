@@ -59,7 +59,7 @@ const ProfileAvatar = ({ userProfile }) => {
     }
 
     return (
-    <div className={`profile-avatar-container align-items-center ${!showProfileAvatar && 'hide-avatar'}`} onMouseOver={fadeOutProfileAvatar}>
+    <div className={`profile-avatar-container align-items-center${!showProfileAvatar && 'hide-avatar-again'}`} style={{ visibility: !showProfileAvatar && 'hidden', opacity: !showProfileAvatar && '0' }} onMouseOver={fadeOutProfileAvatar}>
         <div className="profile-avatar">
                 <img className="profile-avatar-img" src="https://www.computerhope.com/jargon/g/guest-user.jpg" alt="Skytsunami" />
         </div>
@@ -71,7 +71,7 @@ const ProfileAvatar = ({ userProfile }) => {
 }
 
 const PlaylistDisplaysContainer = ({ userPlaylists, displayPlaylistContent }) => {
-    const [showContainer, setShowContainer] = useState(true);
+    const [showContainer, setShowContainer] = useState(false);
 
     const playlistDisplays = userPlaylists.map((playlist) => {
         return (
@@ -85,9 +85,9 @@ const PlaylistDisplaysContainer = ({ userPlaylists, displayPlaylistContent }) =>
     return (
         <>
             <div 
-                className="hide-playlist-displays-btn" 
+                className="hide-playlist-displays-btn fade-in-anm" 
                 onClick={() => setShowContainer(!showContainer)} 
-                style={{ bottom: !showContainer && '0px', backgroundColor: showContainer ? 'red' : 'green' }}
+                style={{ bottom: !showContainer && '-256px', backgroundColor: showContainer ? 'red' : 'green' }}
             >
                 {showContainer ? 'Hide Playlists' : 'Show Playlists'}
             </div>
