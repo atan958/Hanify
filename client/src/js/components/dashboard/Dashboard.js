@@ -32,12 +32,13 @@ export default function Dashboard({ code }) {
     */
     useEffect(() => {
         if(!playingTrack) return;
-
+        console.log(playingTrack);
+        console.log(playingTrack.artist);
         axios
         .get('http://localhost:3001/lyrics', {
             params: {
-                track: playingTrack.title,
-                artist: playingTrack.artist,
+                track: playingTrack.title ?  playingTrack.title : playingTrack.name,
+                artist: playingTrack.artist ? playingTrack.artist : playingTrack.artists[0]?.name,
             }
         })
         .then((res) => {
