@@ -104,7 +104,7 @@ export default function Dashboard({ code }) {
             return <TrackSearchResult 
                         track={track} 
                         key={track.uri} 
-                        chooseTrack={chooseTrack} 
+                        chooseSearchTrack={chooseSearchTrack} 
                         clearSearch={clearSearch}
                     />
         });
@@ -128,7 +128,7 @@ export default function Dashboard({ code }) {
     /*
     / Sets the track which cs current playing on the Player component
     */
-    const chooseTrack = (track) => {
+    const chooseSearchTrack = (track) => {
         searchResults.forEach((track) => {
             track.playing = false 
         });
@@ -198,7 +198,7 @@ export default function Dashboard({ code }) {
                 {(showHome && searchResults.length === 0) && <Home />}
             </div>
             <div>
-                <Player accessToken={accessToken} track={playingTrack} />
+                <Player accessToken={accessToken} track={playingTrack}/>
             </div>
         </Container>
     )

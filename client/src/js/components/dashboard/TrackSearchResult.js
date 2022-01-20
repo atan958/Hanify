@@ -1,8 +1,8 @@
 import '../../../css/search-result.css'
 
-export default function TrackSearchResult({ track, chooseTrack, clearSearch }) {
+export default function TrackSearchResult({ track, chooseSearchTrack, clearSearch }) {
     const handlePlay = () => {
-        chooseTrack(track)
+        chooseSearchTrack(track)
     }
     
     return (

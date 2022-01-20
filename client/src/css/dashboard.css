@@ -14,9 +14,8 @@
 .content-container-bg {
     position: relative;
     color: black;
-    background-color: rgb(255, 210, 216);
     background: rgb(248,135,255);
-    background: linear-gradient(90deg, rgba(248,135,255,1) 0%, rgba(239,205,255,1) 49%, rgba(187,145,255,1) 100%);
+    background: linear-gradient(90deg, rgb(113, 121, 126) 0%, rgb(235, 235, 235) 49%, rgb(113, 121, 126) 100%);
 }
 
 .nav-bar-container {
@@ -34,13 +33,13 @@
 }
 
 .nav-btn {
-    background-color: #04AA6D; /* Green background */
-    border: 1px solid green; /* Green border */
+    background-color: #04AA6D;
+    border: 1px solid green;
     border-radius: 5px;
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
+    color: white;
+    padding: 10px 24px; 
+    cursor: pointer;
+    float: left; 
 
     width: calc(100%/3);
     text-align: center;

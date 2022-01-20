@@ -25,7 +25,7 @@ const Profile = ({ accessToken, choosePlaylistTrack }) => {
             {userPlaylists?.map((playlist) => {
                 const playlistImg = <img src={playlist.images[0].url} width={64} height={64}/>
                 return (
-                    <div className="fade-in-anm playlist-display bg-info my-1" 
+                    <div className="fade-in-anm playlist-display my-1" 
                         onClick={() => displayPlaylistContent(playlist)}>
                         {playlistImg}{playlist.name}
                     </div>

@@ -37,8 +37,7 @@
 }
 
 .overlay-content-bg {
-  background: rgb(248,135,255);
-  background: linear-gradient(90deg, rgb(197, 135, 255) 0%, rgba(239,205,255,1) 49%, rgba(187,145,255,1) 100%);
+  background: linear-gradient(90deg, green 0%, rgb(143, 143, 143) 50%, green 100%);
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -159,4 +158,6 @@
 
 .playlist-display {
   cursor: pointer;
+  background-color: black;
+  color: white;
 }
