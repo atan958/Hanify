@@ -2,16 +2,13 @@ import { useState, useEffect } from 'react';
 
 import axios from 'axios'
 
-const useUserProfile = (accessToken) => {
-    const [userInfo, setUserInfo] = useState();
+const useUserPlaylists = (accessToken) => {
+    const [userPlaylists, setUserPlaylists] = useState([]);
 
-    /*
-    / Acquires the current User's profile information
-    */
     useEffect(() => {
         if(!accessToken) return;
-        const retrieveUserInfo = async () => {
-            const res = await axios.get('https://api.spotify.com/v1/me', {  
+        const retrieveUserPlayLists = async () => {
+            const res = await axios.get('	https://api.spotify.com/v1/me/playlists', { 
                 headers: {
                     'Accept' : 'application/json',
                     'Content-Type' : 'application/json',
@@ -19,13 +16,13 @@ const useUserProfile = (accessToken) => {
                 } 
             });
             const data = res.data;
-            console.log(data);
-            setUserInfo(data);
+            console.log(data.items);
+            setUserPlaylists(data.items);
         }
-        retrieveUserInfo();
+        retrieveUserPlayLists();
     }, [accessToken]);
 
-    return userInfo;
+  return userPlaylists;
 };
 
-export default useUserProfile;
+export default useUserPlaylists;
