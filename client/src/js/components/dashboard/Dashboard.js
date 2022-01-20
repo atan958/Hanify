@@ -47,8 +47,6 @@ export default function Dashboard({ code }) {
         });
     }, [playingTrack]);
 
-
-
     /*
     / Sets the Access Token whenever the useAuth hook produces output
     */
@@ -134,6 +132,12 @@ export default function Dashboard({ code }) {
             track.playing = false 
         });
         track.playing = true;
+        console.log()
+        setPlayingTrack(track);
+    }
+
+    const choosePlaylistTrack = (track) => {
+        console.log(track);
         setPlayingTrack(track);
     }
 
@@ -189,7 +193,7 @@ export default function Dashboard({ code }) {
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
-                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken}/>}
+                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
                 {(showHome && searchResults.length === 0) && <Home />}
             </div>
             <div>

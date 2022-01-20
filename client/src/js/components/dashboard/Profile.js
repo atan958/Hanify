@@ -5,7 +5,7 @@ import PlaylistContent from "./PlaylistContent";
 
 import '../../../css/profile.css'
 
-const Profile = ({ accessToken }) => {
+const Profile = ({ accessToken, choosePlaylistTrack }) => {
     const userProfile = useUserProfile(accessToken);
     const userPlaylists = useUserPlaylists(accessToken);
     const [selectedPlaylist, setSelectedPlaylist] = useState();
@@ -14,7 +14,7 @@ const Profile = ({ accessToken }) => {
     console.log(userProfile);
     return (
         <div>
-            {showPlaylistContent && <PlaylistContent hideContent={() => setShowPlaylistContent(false)} selectedPlaylist={selectedPlaylist} accessToken={accessToken}/>}
+            {showPlaylistContent && <PlaylistContent hideContent={() => setShowPlaylistContent(false)} selectedPlaylist={selectedPlaylist} accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
             {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
             {userProfile?.display_name}
             {userPlaylists?.map((playlist) => {
