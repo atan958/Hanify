@@ -9,35 +9,29 @@ const Profile = ({ accessToken, choosePlaylistTrack }) => {
     const userProfile = useUserProfile(accessToken);
     const userPlaylists = useUserPlaylists(accessToken);
     const [selectedPlaylist, setSelectedPlaylist] = useState();
-    const [showPlaylistContent, setShowPlaylistContent] = useState(false);
 
     const displayPlaylistContent = (playlist) => {
         setSelectedPlaylist(playlist);
-        setShowPlaylistContent(true);
-    }
-
-    const renderPlaylistDisplays = () => {
-        return userPlaylists.map((playlist) => {
-            return (
-                <PlaylistDisplay 
-                    playlist={playlist} 
-                    displayPlaylistContent={displayPlaylistContent}
-                />
-            );
-        })
     }
 
     console.log(userProfile);
     return (
         <div>
-            {userProfile && <ProfileAvatar userProfile={userProfile}/>}
-            {showPlaylistContent && <PlaylistContent hideContent={() => setShowPlaylistContent(false)} selectedPlaylist={selectedPlaylist} accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
+            {userProfile && 
+                <ProfileAvatar userProfile={userProfile}/>
+            }
+            <PlaylistContent 
+                selectedPlaylist={selectedPlaylist} 
+                accessToken={accessToken} 
+                choosePlaylistTrack={choosePlaylistTrack}
+            />
             {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
             {userPlaylists && 
-                <div className="playlist-displays-container flex-row d-inline-flex">
-                    {renderPlaylistDisplays()}
-                </div>
-                }
+                <PlaylistDisplaysContainer 
+                    userPlaylists={userPlaylists}
+                    displayPlaylistContent={displayPlaylistContent}
+                />
+            }
         </div>
     )
 }
@@ -76,8 +70,37 @@ const ProfileAvatar = ({ userProfile }) => {
     );
 }
 
+const PlaylistDisplaysContainer = ({ userPlaylists, displayPlaylistContent }) => {
+    const [showContainer, setShowContainer] = useState(true);
+
+    const playlistDisplays = userPlaylists.map((playlist) => {
+        return (
+            <PlaylistDisplay 
+                playlist={playlist} 
+                displayPlaylistContent={displayPlaylistContent}
+            />
+        );
+    })
+
+    return (
+        <>
+            <div 
+                className="hide-playlist-displays-btn" 
+                onClick={() => setShowContainer(!showContainer)} 
+                style={{ bottom: !showContainer && '0px', backgroundColor: showContainer ? 'red' : 'green' }}
+            >
+                {showContainer ? 'Hide Playlists' : 'Show Playlists'}
+            </div>
+            <div className="playlist-displays-container flex-row d-inline-flex" style={{ bottom: !showContainer && '-256px' }}>
+                {playlistDisplays}
+            </div>
+        </>
+    );
+}
+
 const PlaylistDisplay = ({ playlist, displayPlaylistContent }) => {
     const playlistImg = <img src={playlist.images[0].url} width={128} height={128}/>
+
     return(
     <div className="fade-in-anm playlist-display-container m-3 p-3" 
         onClick={() => displayPlaylistContent(playlist)}>

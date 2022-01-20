@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const usePlaylistContent = (accessToken, playlistTrackUrl) => {
     const [playlistContent, setPlaylistContent] = useState();
-
+    
     useEffect(() => {
         if(!playlistTrackUrl) return;
         const retrievePlaylistContent = async () => {
@@ -20,7 +20,7 @@ const usePlaylistContent = (accessToken, playlistTrackUrl) => {
             setPlaylistContent(data);
         }
         retrievePlaylistContent();
-    }, [accessToken]);
+    }, [accessToken, playlistTrackUrl]);
   
     return playlistContent;
 };

@@ -191,7 +191,7 @@ export default function Dashboard({ code }) {
                     </div>
                 }
             </div>
-            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: "auto", overflowX: "hidden" }}>
+            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: displayProfile ? "hidden" : "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
                 {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack}/>}
