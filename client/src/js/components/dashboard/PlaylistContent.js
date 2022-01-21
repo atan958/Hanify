@@ -3,14 +3,19 @@ import usePlaylistContent from './usePlaylistContent';
 
 const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, playingTrack }) => {
     const playlistContent = usePlaylistContent(accessToken, selectedPlaylist?.tracks.href);
-    console.log(playlistContent);
+
     return (
         <>
-        <div className="d-flex flex-column playlist-content-title">
-            {selectedPlaylist ? selectedPlaylist.name.toUpperCase() : 'SELECT PLAYLIST'}
+        <div className="selected-playlist-header-container">
+            <div className="d-flex flex-column playlist-content-avatar">
+                <img src={selectedPlaylist?.images[0].url} className="playlist-content-avatar-img"/>
+            </div>
+            <div className="d-flex flex-column playlist-content-title">
+                {selectedPlaylist ? selectedPlaylist.name.toUpperCase() : 'SELECT PLAYLIST'}
+            </div>
         </div>
-        <div className="wow-container d-flex flex-column fade-in-anm">
-            <div className="d-flex flex-column overlay-content overlay-content-bg">
+        <div className="playlist-content-container-hide-scrollbar d-flex flex-column fade-in-anm">
+            <div className="d-flex flex-column playlist-content-container playlist-content-bg">
                 {playlistContent ? 
                 playlistContent.items.map((item) => {
                     return (

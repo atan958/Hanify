@@ -19,6 +19,7 @@ const useUserProfile = (accessToken) => {
                 } 
             });
             const data = res.data;
+            console.log('User Info');
             console.log(data);
             setUserInfo(data);
         }

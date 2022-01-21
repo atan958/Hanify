@@ -1,3 +1,10 @@
+.selected-playlist-header-container {
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  background-color: rgba(0, 0, 0, 0.541);
+}
+
 .playlist-content-title {
   position: absolute;
   top: 30px;
@@ -16,20 +23,33 @@
   background-color: green;
 }
 
+.playlist-content-avatar {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.playlist-content-avatar-img {
+  width: 150px;
+  height: 150px;
+}
+
 /*------------------------------------------------------------------------------------*/
-.wow-container {
+
+.playlist-content-container-hide-scrollbar {
   position: absolute;
   bottom: 20px;
   right: 20px;
   background-color: rgba(196, 0, 0, 0.205);
-  width: 60%;
-  height: 80%;
+  width: 75%;
+  height: 70%;
   overflow: hidden;
   border: 3px solid black;
   border-radius:20px;
 }
 
-.overlay-content {
+.playlist-content-container {
   position: absolute;
   left:0;
   top:0;
@@ -41,43 +61,8 @@
   padding: 10px 55px 10px 10px;
 }
 
-.overlay-content-bg {
+.playlist-content-bg {
   background: linear-gradient(90deg, rgb(113, 121, 126) 0%, rgb(209, 209, 209) 49%, rgb(113, 121, 126) 100%);
-}
-
-/*------------------------------------------------------------------------------------*/
-
-.overlay-content-control-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 40px;
-  width: 100%;
-  background-color: rgb(70, 70, 70);
-  color: white;
-  z-index: 10;
-  border-bottom: 3px solid black;
-}
-
-.overlay-playlist-title {
-  position: absolute;
-  top: 5px;
-  left: 20px;
-}
-
-.hide-overlay-btn {
-  position: absolute;
-  left: 500px;
-  top: -5px;
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-  
-.hide-overlay-btn:hover {
-    color: rgb(230, 0, 0);
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -105,8 +90,8 @@
 
 .profile-avatar-container {
   position: absolute;
-  top: 40px;
-  left: 11%;
+  top: 350px;
+  left: 4%;
   padding: 20px;
 	display: flex;
 	flex-direction: column;
@@ -115,7 +100,7 @@
   border-radius: 10px;
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
   width: 200px;
-  z-index: 3;
+  z-index: 1;
   transition: 0.5s ease;
 
 }
@@ -182,7 +167,7 @@
 
 .hide-playlist-displays-btn {
   position: absolute;
-  left: 50px;
+  left: 25px;
   bottom: 0px;
 
   text-align: center;

@@ -16,7 +16,7 @@ const useUserPlaylists = (accessToken) => {
                 } 
             });
             const data = res.data;
-            console.log(data.items);
+            // console.log(data.items);
             setUserPlaylists(data.items);
         }
         retrieveUserPlayLists();
