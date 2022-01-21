@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 
+import useIsTrackPlaying from './useIsTrackPlaying';
+
 import '../../../css/search-result.css'
 
 export default function TrackSearchResult({ track, chooseSearchTrack, clearSearch, playingTrack }) {
-    const [playing, setPlaying] = useState(true);
-
-    useEffect(() => {
-        (track?.uri === playingTrack?.uri) ? setPlaying(true) : setPlaying(false);
-    });
+    const isTrackPlaying = useIsTrackPlaying(track, playingTrack);
 
     const handlePlay = () => {
         chooseSearchTrack(track)
@@ -15,7 +13,7 @@ export default function TrackSearchResult({ track, chooseSearchTrack, clearSearc
     
     return (
         <div 
-            className={`d-flex m-2 align-items-center fade-in-anm result-container ${playing && 'result-container-selected'}`}
+            className={`d-flex m-2 align-items-center fade-in-anm result-container ${isTrackPlaying && 'result-container-selected'}`}
             style={{ cursor: 'pointer'}}
             onClick={handlePlay}    
         >
@@ -24,7 +22,7 @@ export default function TrackSearchResult({ track, chooseSearchTrack, clearSearc
                 <div>{track.title}</div>
                 <div className="text-muted">{track.artist}</div>
             </div>
-            {playing && (
+            {isTrackPlaying && (
                 <>
                 <div className="position-absolute end-0 shaker" style={{ marginRight: '30px' }}>
                     <div className="avatar">
