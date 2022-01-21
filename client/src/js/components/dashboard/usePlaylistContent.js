@@ -16,6 +16,7 @@ const usePlaylistContent = (accessToken, playlistTrackUrl) => {
                 } 
             });
             const data = res.data;
+            console.log('data');
             console.log(data);
             setPlaylistContent(data);
         }

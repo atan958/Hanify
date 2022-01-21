@@ -223,3 +223,9 @@
 .playlist-display-name {
   margin: 10px 0px 0px 0px;
 }
+
+/*------------------------------------------------------------------------------------*/
+
+.playlist-track-playing {
+  background-color: rgb(236, 236, 236);
+}
