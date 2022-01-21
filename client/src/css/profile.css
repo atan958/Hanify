@@ -83,13 +83,22 @@
 /*------------------------------------------------------------------------------------*/
 
 .playlist-item {
-    background-color:white;
+  background-color: rgb(252, 237, 239);
     transition: 0.3s ease;
     cursor: pointer;
 }
 
 .playlist-item:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.27);
+}
+
+.playlist-track-playing {
+  background-color: rgb(255, 255, 255);
+}
+
+.playlist-track-music-note {
+  position: absolute;
+  right: 50px;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -226,6 +235,3 @@
 
 /*------------------------------------------------------------------------------------*/
 
-.playlist-track-playing {
-  background-color: rgb(236, 236, 236);
-}

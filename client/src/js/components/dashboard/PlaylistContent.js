@@ -18,7 +18,12 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
                     );
                 }) 
                 : 
-                selectedPlaylist && "Loading..."
+                selectedPlaylist ?
+                     "Loading..."
+                     : 
+                     <div className="playlist-content-placeholder">
+                         Hello There
+                     </div>
                 }
             </div>
         </div>
@@ -38,6 +43,15 @@ const PlaylistTrack = ({ item, choosePlaylistTrack, playingTrack }) => {
                 <div className="mx-3">{item.track.name}</div>
                 <div className="mx-3 text-muted">{item.track.artists[0].name}</div>
             </div>
+            {isTrackPlaying && (
+                <>
+                <div className="shaker playlist-track-music-note" style={{ marginRight: '30px' }}>
+                    <div className="avatar">
+                        <img src={require('../../../assets/musical-note.png')} />
+                    </div>
+                </div>
+                </>
+            )} 
         </div>
     );
 }

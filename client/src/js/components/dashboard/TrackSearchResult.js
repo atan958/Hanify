@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import useIsTrackPlaying from './useIsTrackPlaying';
 
 import '../../../css/search-result.css'
