@@ -84,7 +84,6 @@ export default function Dashboard({ code }) {
                 title: track.name,
                 uri: track.uri,
                 albumUrl: smallestAlbumImage.url,
-                playing: (track.uri === playingTrack?.uri) ? true : false
                 }
             });
             setSearchResults(tracks);
@@ -106,6 +105,7 @@ export default function Dashboard({ code }) {
                         key={track.uri} 
                         chooseSearchTrack={chooseSearchTrack} 
                         clearSearch={clearSearch}
+                        playingTrack={playingTrack}
                     />
         });
     }
@@ -203,7 +203,6 @@ export default function Dashboard({ code }) {
         </Container>
     )
 }
-
 
 /*
 / Helper Method: Separates the lyrics into their own divs

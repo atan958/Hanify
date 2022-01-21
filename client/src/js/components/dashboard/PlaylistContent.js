@@ -33,7 +33,7 @@ const PlaylistTrack = ({ item, choosePlaylistTrack, playingTrack }) => {
     const [playing, setPlaying] = useState(false);
 
     useEffect(() => {
-        (item.track.uri === playingTrack.uri) ? setPlaying(true) : setPlaying(false);
+        (item.track?.uri === playingTrack?.uri) ? setPlaying(true) : setPlaying(false);
     });
 
     return (
