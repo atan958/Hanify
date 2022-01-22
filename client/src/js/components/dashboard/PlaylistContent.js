@@ -44,18 +44,25 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
                 <div className="playlist-content-title">
                     {selectedPlaylist?.name}
                 </div>
-                {selectedPlaylist &&
                 <div className="playlist-content-info-container">
-                    <img src={userInfo?.images[0].url} className="playlist-content-info-img"/>
-                    <span className="playlist-owner">
-                        {`${userInfo.display_name}`} 
-                    </span>
-                    <span className="playlist-content-info-dot mx-2"/>
-                    <span>
-                        {`${playlistContent?.total} Songs, ${playlistContent && getPlaylistDuration(playlistContent)}`}
-                    </span>
+                    {loadingContent ?
+                    <div>
+                        ...
+                    </div>
+                    :
+                    selectedPlaylist && 
+                    <>
+                        <img src={userInfo?.images[0].url} className="playlist-content-info-img"/>
+                        <span className="playlist-owner fade-in-anm">
+                            {`${userInfo.display_name}`} 
+                        </span>
+                        <span className="playlist-content-info-dot mx-2 fade-in-anm"/>
+                        <span className="fade-in-anm">
+                            {`${playlistContent?.total} Songs, ${playlistContent && getPlaylistDuration(playlistContent)}`}
+                        </span>
+                    </>
+                    }
                 </div>
-                }
             </div>
         </div>
         <div className="playlist-content-container-hide-scrollbar d-flex flex-column fade-in-anm">

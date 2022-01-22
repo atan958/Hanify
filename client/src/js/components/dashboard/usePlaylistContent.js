@@ -7,6 +7,7 @@ const usePlaylistContent = (accessToken, playlistTrackUrl) => {
     
     useEffect(() => {
         if(!playlistTrackUrl) return;
+        let cancel = false;
         const retrievePlaylistContent = async () => {
             const res = await axios.get(playlistTrackUrl, {  
                 headers: {
@@ -15,12 +16,14 @@ const usePlaylistContent = (accessToken, playlistTrackUrl) => {
                     'Authorization' : `Bearer ${accessToken}`
                 } 
             });
+            if(cancel) return;
             const data = res.data;
-            // console.log('data');
-            // console.log(data);
             setPlaylistContent(data);
         }
         retrievePlaylistContent();
+        return(() => {
+            cancel = true;
+        });
     }, [accessToken, playlistTrackUrl]);
   
     return playlistContent;
