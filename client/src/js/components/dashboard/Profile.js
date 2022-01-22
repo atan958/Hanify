@@ -25,6 +25,7 @@ const Profile = ({ accessToken, choosePlaylistTrack, playingTrack }) => {
                 accessToken={accessToken} 
                 choosePlaylistTrack={choosePlaylistTrack}
                 playingTrack={playingTrack}
+                userInfo={userProfile}
             />
             {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
             {userPlaylists && 
