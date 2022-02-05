@@ -15,7 +15,6 @@ const Profile = ({ accessToken, chooseTrack, playingTrack }) => {
         setSelectedPlaylist(playlist);
     }
 
-    console.log(userProfile);
     return (
         <div>
             {userProfile && 

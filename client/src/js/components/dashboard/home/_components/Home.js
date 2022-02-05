@@ -1,5 +1,5 @@
-import '../../../../css/home.css'
-import useSpotifyGroups from './useSpotifyGroups'
+import '../../../../../css/home.css'
+import useSpotifyGroups from '../_hooks/useSpotifyGroups'
 
 const Home = () => {
     const spotifyGroups = useSpotifyGroups();
