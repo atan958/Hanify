@@ -9,12 +9,14 @@ import Player from './Player'
 import Home from './Home'
 import Profile from './Profile'
 import useSearchResults from './useSearchResults'
+import useShowDashContent from './useShowDashContent'
 
 import '../../../css/dashboard.css'
 
 const spotifyApi = new SpotifyWebApi({
     clientId: 'f4ac31f857c64234a172c74f9bd21cb8',
 });
+
 
 const Dashboard = ({ code }) => {
     const accessToken = useAuth(code);
@@ -24,9 +26,14 @@ const Dashboard = ({ code }) => {
     const [lyrics, setLyrics] = useState([]);
 
     const [showNavBar, setShowNavBar] = useState(false);
-    const [showProfile, setShowProfile] = useState(false);
-    const [showHome, setShowHome] = useState(true);
-    const [showLyrics, setShowLyrics] = useState(false);
+    const [
+        _profile, 
+        _home, 
+        _lyrics, 
+        _displayProfile, 
+        _displayHome, 
+        _displayLyrics
+    ] = useShowDashContent(setSearch);
 
     /*
     / Acquires the lyrics for the currently playing track
@@ -57,8 +64,6 @@ const Dashboard = ({ code }) => {
         spotifyApi.setAccessToken(accessToken);
     }, [accessToken]);
 
-
-
     /*
     / Displays the songs/artists which match the search
     */
@@ -68,7 +73,7 @@ const Dashboard = ({ code }) => {
                         track={track} 
                         key={track.uri} 
                         chooseSearchTrack={chooseSearchTrack} 
-                        displayLyrics={displayLyrics}
+                        displayLyrics={_displayLyrics}
                         playingTrack={playingTrack}
                     />
         });
@@ -106,30 +111,6 @@ const Dashboard = ({ code }) => {
         setPlayingTrack(track);
     }
 
-    /*
-    / 
-    */
-    const displayLyrics = () => {
-        setShowLyrics(true);
-        setShowHome(false);
-        setShowProfile(false);
-        setSearch("");
-    }
-
-    const displayHome = () => {
-        setShowLyrics(false);
-        setShowHome(true);
-        setShowProfile(false);
-        setSearch("");
-    }
-
-    const displayProfile = () => {
-        setShowLyrics(false);
-        setShowHome(false);
-        setShowProfile(true);
-        setSearch("");
-    }
-
     return (
         <Container className="d-flex flex-column py-4 content-container-container-bg" style={{ height: '100vh' }}>
             <div className="nav-bar-container" onMouseOver={() => { setShowNavBar(true) }} onMouseLeave={() => { setShowNavBar(false) }}>
@@ -143,23 +124,23 @@ const Dashboard = ({ code }) => {
                 />
                 {showNavBar && 
                     <div className="btn-group fade-in-anm">
-                        <div className="mx-2 my-3 nav-btn" onClick={displayHome}>
+                        <div className="mx-2 my-3 nav-btn" onClick={_displayHome}>
                             <img src={require('../../../assets/home.png')} className="nav-img"/>
                         </div>
-                        <div className="mx-2 my-3 nav-btn" onClick={displayProfile}>
+                        <div className="mx-2 my-3 nav-btn" onClick={_displayProfile}>
                         <img src={require('../../../assets/user.png')} className="nav-img"/>
                         </div>
-                        <div className="mx-2 my-3 nav-btn" onClick={displayLyrics}>
+                        <div className="mx-2 my-3 nav-btn" onClick={_displayLyrics}>
                             <img src={require('../../../assets/song-lyrics.png')} className="nav-img"/>
                         </div>
                     </div>
                 }
             </div>
-            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: (showProfile && search.length === 0) ? "hidden" : "auto", overflowX: "hidden" }}>
+            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: (_profile && search.length === 0) ? "hidden" : "auto", overflowX: "hidden" }}>
                 {renderResults()}
-                {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
-                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack} playingTrack={playingTrack}/>}
-                {(showHome && searchResults.length === 0) && <Home />}
+                {(_lyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
+                {(_profile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack} playingTrack={playingTrack}/>}
+                {(_home && searchResults.length === 0) && <Home />}
             </div>
             <div>
                 <Player accessToken={accessToken} track={playingTrack}/>
