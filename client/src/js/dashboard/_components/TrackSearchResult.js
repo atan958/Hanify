@@ -1,6 +1,6 @@
 import useIsTrackPlaying from '../_hooks/useIsTrackPlaying';
 
-import '../../../../css/search-result.css'
+import '../../../css/search-result.css'
 
 export default function TrackSearchResult({ track, chooseTrack, displayLyrics, playingTrack }) {
     const isTrackPlaying = useIsTrackPlaying(track, playingTrack);
@@ -24,7 +24,7 @@ export default function TrackSearchResult({ track, chooseTrack, displayLyrics, p
                 <>
                 <div className="position-absolute end-0 shaker" style={{ marginRight: '30px' }}>
                     <div className="avatar">
-                        <img src={require('../../../../assets/musical-note.png')} />
+                        <img src={require('../../../assets/musical-note.png')} />
                     </div>
                 </div>
                 <div className="show-lyrics-btn show-lyrics-btn-text-centered" onClick={displayLyrics}>LYRICS</div>

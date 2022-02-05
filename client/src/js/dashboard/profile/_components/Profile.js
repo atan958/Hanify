@@ -4,7 +4,7 @@ import PlaylistContent from "./PlaylistContent";
 import useUserProfile from "../_hooks/useUserProfile";
 import useUserPlaylists from "../_hooks/useUserPlaylists";
 
-import '../../../../../css/profile.css'
+import '../../../../css/profile.css'
 
 const Profile = ({ accessToken, chooseTrack, playingTrack }) => {
     const userProfile = useUserProfile(accessToken);
