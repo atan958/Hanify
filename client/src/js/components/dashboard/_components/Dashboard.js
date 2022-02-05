@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import axios from 'axios'
 
-import useAuth from '../../login/useAuth'
+import useAuth from '../../../login/useAuth'
 import TrackSearchResult from './TrackSearchResult'
 import Player from './Player'
 import Home from '../home/_components/Home'
