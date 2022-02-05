@@ -9,7 +9,7 @@ const Home = () => {
     const spotifyGroups = useSpotifyGroups();
 
     return (
-        <div className="home-container">
+        <div>
             {spotifyGroups ? 
                 <SpotifyGroupDisplaysContainer groups={spotifyGroups}/>
                 :

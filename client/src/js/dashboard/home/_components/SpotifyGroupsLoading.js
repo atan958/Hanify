@@ -1,3 +1,5 @@
+import '../../../../css/animations/groups-loading.css'
+
 const SpotifyGroupsLoading = () => {
     return (
     <div className="loading-groups-container vertical-center horizontal-center">
