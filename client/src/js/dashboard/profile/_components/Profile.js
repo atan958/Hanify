@@ -27,7 +27,6 @@ const Profile = ({ accessToken, chooseTrack, playingTrack }) => {
                 playingTrack={playingTrack}
                 userInfo={userProfile}
             />
-            {(!userProfile && !userPlaylists) && <PlaylistsLoading />}
             {userPlaylists && 
                 <PlaylistDisplaysContainer 
                     userPlaylists={userPlaylists}
@@ -40,15 +39,6 @@ const Profile = ({ accessToken, chooseTrack, playingTrack }) => {
 
 export default Profile
 
-const PlaylistsLoading = () => {
-    return (
-    <div className="loading-groups-container vertical-center horizontal-center">
-        <div class="lds-facebook">
-            <div/><div/><div/>
-        </div>
-    </div>
-    );
-}
 
 const ProfileAvatar = ({ userProfile }) => {
     const [showProfileAvatar, setShowProfileAvatar] = useState(true);
