@@ -7,6 +7,7 @@ import TrackSearchResult from './TrackSearchResult'
 import Player from './Player'
 import Home from '../home/Home'
 import Profile from '../profile/Profile'
+import Lyrics from '../lyrics/Lyrics'
 import useSearchResults from '../_hooks/useSearchResults'
 import useShowDashContent from '../_hooks/useShowDashContent'
 import useSpotifyWebApi from '../_hooks/useSpotifyWebApi'
@@ -71,24 +72,6 @@ const Dashboard = ({ code }) => {
     }
 
     /*
-    / Displays the lyrics of the currently playing track
-    */
-    const renderLyrics = () => {
-        return (
-            <div className="text-center py-4" style={{ whiteSpace: "pre" }}>
-                {lyrics.map((line, index) =>{
-                    return (
-                        <div className="lyric-line highlight" style={{ animationDuration: `${index*0.1}s` }}>
-                            {line}
-                            <br/>
-                        </div>
-                    );
-                })}
-            </div>
-        );
-    }
-
-    /*
     / Sets the currently playing track from any displayed tracks 
     */
     const chooseTrack = (track) => {
@@ -122,7 +105,7 @@ const Dashboard = ({ code }) => {
             </div>
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: (showProfile && search.length === 0) ? "hidden" : "auto", overflowX: "hidden" }}>
                 {renderResults()}
-                {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
+                {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : <Lyrics lyrics={lyrics}/>)}
                 {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} chooseTrack={chooseTrack} playingTrack={playingTrack}/>}
                 {(showHome && searchResults.length === 0) && <Home />}
             </div>
