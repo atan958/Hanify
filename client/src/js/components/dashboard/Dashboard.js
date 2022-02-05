@@ -27,12 +27,12 @@ const Dashboard = ({ code }) => {
 
     const [showNavBar, setShowNavBar] = useState(false);
     const [
-        _profile, 
-        _home, 
-        _lyrics, 
-        _displayProfile, 
-        _displayHome, 
-        _displayLyrics
+        showProfile, 
+        showHome, 
+        showLyrics, 
+        displayProfile, 
+        displayHome, 
+        displayLyrics
     ] = useShowDashContent(setSearch);
 
     /*
@@ -73,7 +73,7 @@ const Dashboard = ({ code }) => {
                         track={track} 
                         key={track.uri} 
                         chooseSearchTrack={chooseSearchTrack} 
-                        displayLyrics={_displayLyrics}
+                        displayLyrics={displayLyrics}
                         playingTrack={playingTrack}
                     />
         });
@@ -106,6 +106,9 @@ const Dashboard = ({ code }) => {
         setPlayingTrack(track);
     }
 
+    /*
+    /
+    */
     const choosePlaylistTrack = (track) => {
         console.log(track);
         setPlayingTrack(track);
@@ -124,23 +127,23 @@ const Dashboard = ({ code }) => {
                 />
                 {showNavBar && 
                     <div className="btn-group fade-in-anm">
-                        <div className="mx-2 my-3 nav-btn" onClick={_displayHome}>
+                        <div className="mx-2 my-3 nav-btn" onClick={displayHome}>
                             <img src={require('../../../assets/home.png')} className="nav-img"/>
                         </div>
-                        <div className="mx-2 my-3 nav-btn" onClick={_displayProfile}>
+                        <div className="mx-2 my-3 nav-btn" onClick={displayProfile}>
                         <img src={require('../../../assets/user.png')} className="nav-img"/>
                         </div>
-                        <div className="mx-2 my-3 nav-btn" onClick={_displayLyrics}>
+                        <div className="mx-2 my-3 nav-btn" onClick={displayLyrics}>
                             <img src={require('../../../assets/song-lyrics.png')} className="nav-img"/>
                         </div>
                     </div>
                 }
             </div>
-            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: (_profile && search.length === 0) ? "hidden" : "auto", overflowX: "hidden" }}>
+            <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: (showProfile && search.length === 0) ? "hidden" : "auto", overflowX: "hidden" }}>
                 {renderResults()}
-                {(_lyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
-                {(_profile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack} playingTrack={playingTrack}/>}
-                {(_home && searchResults.length === 0) && <Home />}
+                {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
+                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack} playingTrack={playingTrack}/>}
+                {(showHome && searchResults.length === 0) && <Home />}
             </div>
             <div>
                 <Player accessToken={accessToken} track={playingTrack}/>
