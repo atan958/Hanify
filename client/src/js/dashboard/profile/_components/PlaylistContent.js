@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import PlaylistTrack from './PlaylistTrack';
+import PrePlaylistSelectionLoading from './PrePlaylistSelectionLoading'
 import usePlaylistContent from '../_hooks/usePlaylistContent';
 
 import '../../../../css/animations/playlist-content-loading.css'
@@ -97,7 +98,7 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTr
                     }) 
                     : 
                     <div className="playlist-content-placeholder">
-                        <PrePlaylistSelectionLoader/>
+                        <PrePlaylistSelectionLoading/>
                     </div>
                 }
             </div>
@@ -107,34 +108,6 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTr
 };
 
 export default PlaylistContent;
-
-const PrePlaylistSelectionLoader = () => {
-    return (
-    <div className="pre-playlist-selection-container">
-        <div className="background-wrap">
-            <div className="x1 fade-in-anm">
-                <div className="cloud"></div>
-            </div>
-
-            <div className="x2 fade-in-anm">
-                <div className="cloud"></div>
-            </div>
-
-            <div className="x3 fade-in-anm">
-                <div className="cloud"></div>
-            </div>
-
-            <div className="x4 fade-in-anm">
-                <div className="cloud"></div>
-            </div>
-
-            <div className="x5 fade-in-anm">
-                <div className="cloud"></div>
-            </div>
-        </div>
-    </div>
-    );
-}
 
 const LoaderLoadingContent = () => {
     return(
