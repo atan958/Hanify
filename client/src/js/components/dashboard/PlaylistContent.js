@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import useIsTrackPlaying from './useIsTrackPlaying';
 import usePlaylistContent from './usePlaylistContent';
 
+import '../../../css/animations/playlist-content-loading.css'
+import '../../../css/animations/pre-playlist-select.css'
+
 const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, playingTrack, userInfo }) => {
     const playlistContent = usePlaylistContent(accessToken, selectedPlaylist?.tracks.href);
     const [loadingContent, setLoadingContent] = useState(false);
@@ -36,6 +39,8 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
     return (
         <>
         <div className="selected-playlist-header-container py-3 px-5 d-flex flex-row">
+            {selectedPlaylist ? 
+            <>
             <div className="playlist-content-avatar">
                 <img src={selectedPlaylist?.images[0].url} className="playlist-content-avatar-img"/>
             </div>
@@ -64,11 +69,21 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
                     }
                 </div>
             </div>
+            </>
+            :
+            (userInfo &&
+            <div className="pre-playlist-selection-title fade-in-anm">
+                <span className="profile-header-first-name">
+                    {userInfo?.display_name.split(" ")[0]}
+                </span>
+                    {`\'s Tracks`}
+            </div>)
+            }
         </div>
         <div className="playlist-content-container-hide-scrollbar d-flex flex-column fade-in-anm">
             <div className="d-flex flex-column playlist-content-container playlist-content-bg">
                 {loadingContent ?
-                "Loading Content"
+                <LoaderLoadingContent/>
                 :
                 (playlistContent) ? 
                     playlistContent.items.map((item) => {
@@ -82,7 +97,7 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
                     }) 
                     : 
                     <div className="playlist-content-placeholder">
-                        Hello There
+                        <PrePlaylistSelectionLoader/>
                     </div>
                 }
             </div>
@@ -112,6 +127,42 @@ const PlaylistTrack = ({ item, choosePlaylistTrack, playingTrack }) => {
                 </div>
                 </>
             )} 
+        </div>
+    );
+}
+
+const PrePlaylistSelectionLoader = () => {
+    return (
+    <div className="pre-playlist-selection-container">
+        <div className="background-wrap">
+            <div className="x1 fade-in-anm">
+                <div className="cloud"></div>
+            </div>
+
+            <div className="x2 fade-in-anm">
+                <div className="cloud"></div>
+            </div>
+
+            <div className="x3 fade-in-anm">
+                <div className="cloud"></div>
+            </div>
+
+            <div className="x4 fade-in-anm">
+                <div className="cloud"></div>
+            </div>
+
+            <div className="x5 fade-in-anm">
+                <div className="cloud"></div>
+            </div>
+        </div>
+    </div>
+    );
+}
+
+const LoaderLoadingContent = () => {
+    return(
+        <div className="content-loader-centered">
+            <div class="lds-circle"><div></div></div>
         </div>
     );
 }

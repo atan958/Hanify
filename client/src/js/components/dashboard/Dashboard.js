@@ -8,6 +8,7 @@ import TrackSearchResult from './TrackSearchResult'
 import Player from './Player'
 import Home from './Home'
 import Profile from './Profile'
+import useSearchResults from './useSearchResults'
 
 import '../../../css/dashboard.css'
 
@@ -15,10 +16,10 @@ const spotifyApi = new SpotifyWebApi({
     clientId: 'f4ac31f857c64234a172c74f9bd21cb8',
 });
 
-export default function Dashboard({ code }) {
+const Dashboard = ({ code }) => {
     const accessToken = useAuth(code);
     const [search, setSearch] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    const searchResults = useSearchResults(search, accessToken, spotifyApi);
     const [playingTrack, setPlayingTrack] = useState();
     const [lyrics, setLyrics] = useState([]);
 
@@ -49,51 +50,14 @@ export default function Dashboard({ code }) {
     }, [playingTrack]);
 
     /*
-    / Sets the Access Token whenever the useAuth hook produces output
+    / Sets the Access Token whenever the useAuth hook re-states
     */
     useEffect(() => {
         if (!accessToken) return;
         spotifyApi.setAccessToken(accessToken);
     }, [accessToken]);
 
-    /*
-    / 
-    */
-    useEffect(() => {
-        if (!search) { setSearchResults([]); return };
-        if (!accessToken) return;
 
-        let cancel = false;
-        spotifyApi
-        .searchTracks(search)
-        .then((res) => {
-            /*
-            / Cancels the mounting of the returned search data => given a new request was made before the current one's response was received
-            */
-            if (cancel) return;
-            const tracks = res.body.tracks.items.map((track) => {
-                /*
-                / Gets the album image with the smallest size
-                */
-                const smallestAlbumImage = track.album.images.reduce((smallest, image) => {
-                return (smallest.height > image.height) ? image  : smallest;
-                }, track.album.images[0]);
-
-                return {
-                artist: track.artists[0].name,
-                title: track.name,
-                uri: track.uri,
-                albumUrl: smallestAlbumImage.url,
-                }
-            });
-            setSearchResults(tracks);
-        });
-
-        /*
-        / Callback (executed before re-effecting)
-        */
-        return (() => cancel = true);
-    }, [search, accessToken]);
 
     /*
     / Displays the songs/artists which match the search
@@ -203,6 +167,8 @@ export default function Dashboard({ code }) {
         </Container>
     )
 }
+
+export default Dashboard;
 
 /*
 / Helper Method: Separates the lyrics into their own divs

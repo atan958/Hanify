@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9ec99081-7b57-4d4f-a544-aee71b473a0c/resourceGroups/AppServiceQs-rg/providers/Microsoft.Web/sites/TestDeploy-Hanify-98",
+    "appService.deploySubpath": "."
+}

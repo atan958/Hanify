@@ -109,8 +109,50 @@
   padding: 10px 55px 10px 10px;
 }
 
-.playlist-content-bgX {
-  background: linear-gradient(90deg, rgb(113, 121, 126) 0%, rgb(209, 209, 209) 50%, rgb(113, 121, 126) 100%);
+.playlist-content-placeholder {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.pre-playlist-selection-title {
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  height: 94px;
+  padding-right: 10px;
+
+  color: rgb(255, 255, 255);
+  font-size: 64px;
+  font-weight: bold;
+  font-family: Verdana, sans-serif;
+  letter-spacing: -4px;
+  text-shadow: 2px 2px 4px #000000;
+
+  overflow: hidden;
+}
+
+.pre-playlist-selection-container {
+  padding-top: 40px;
+}
+
+.content-loader-centered {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  height: 80px;
+  width: 80px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.profile-header-first-name {
+  color: rgb(255,215,0);
 }
 
 /*------------------------------------------------------------------------------------*/
