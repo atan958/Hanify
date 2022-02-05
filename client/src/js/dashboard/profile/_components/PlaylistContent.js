@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 
 import PlaylistTrack from './PlaylistTrack';
 import PrePlaylistSelectionLoading from './PrePlaylistSelectionLoading'
+import PlaylistContentLoading from './PlaylistContentLoading';
 import usePlaylistContent from '../_hooks/usePlaylistContent';
-
-import '../../../../css/animations/playlist-content-loading.css'
-import '../../../../css/animations/pre-playlist-select.css'
 
 const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTrack, userInfo }) => {
     const playlistContent = usePlaylistContent(accessToken, selectedPlaylist?.tracks.href);
@@ -84,7 +82,7 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTr
         <div className="playlist-content-container-hide-scrollbar d-flex flex-column fade-in-anm">
             <div className="d-flex flex-column playlist-content-container playlist-content-bg">
                 {loadingContent ?
-                <LoaderLoadingContent/>
+                <PlaylistContentLoading/>
                 :
                 (playlistContent) ? 
                     playlistContent.items.map((item) => {
@@ -108,11 +106,3 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTr
 };
 
 export default PlaylistContent;
-
-const LoaderLoadingContent = () => {
-    return(
-        <div className="content-loader-centered">
-            <div class="lds-circle"><div></div></div>
-        </div>
-    );
-}

@@ -1,3 +1,5 @@
+import '../../../../css/animations/pre-playlist-select.css'
+
 const PrePlaylistSelectionLoading = () => {
     return (
     <div className="pre-playlist-selection-container">
