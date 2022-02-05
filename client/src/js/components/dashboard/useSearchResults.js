@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import SpotifyWebApi from 'spotify-web-api-node'
 
 
-const useSearchResults = (search, accessToken, spotifyApi) => {
+const useSearchResults = (search, accessToken, spotifyWebApi) => {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
@@ -10,7 +10,7 @@ const useSearchResults = (search, accessToken, spotifyApi) => {
         if (!accessToken) return;
 
         let cancel = false;
-        spotifyApi
+        spotifyWebApi
         .searchTracks(search)
         .then((res) => {
             /*

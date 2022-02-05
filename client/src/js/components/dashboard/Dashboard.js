@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Container, Form } from 'react-bootstrap'
-import SpotifyWebApi from 'spotify-web-api-node'
 import axios from 'axios'
 
 import useAuth from '../login/useAuth'
@@ -10,18 +9,18 @@ import Home from './Home'
 import Profile from './Profile'
 import useSearchResults from './useSearchResults'
 import useShowDashContent from './useShowDashContent'
+import useSpotifyWebApi from './useSpotifyWebApi'
+
 
 import '../../../css/dashboard.css'
-
-const spotifyApi = new SpotifyWebApi({
-    clientId: 'f4ac31f857c64234a172c74f9bd21cb8',
-});
-
 
 const Dashboard = ({ code }) => {
     const accessToken = useAuth(code);
     const [search, setSearch] = useState("");
-    const searchResults = useSearchResults(search, accessToken, spotifyApi);
+
+    const spotifyWebApi = useSpotifyWebApi(accessToken);
+
+    const searchResults = useSearchResults(search, accessToken, spotifyWebApi);
     const [playingTrack, setPlayingTrack] = useState();
     const [lyrics, setLyrics] = useState([]);
 
@@ -55,14 +54,6 @@ const Dashboard = ({ code }) => {
             console.log(res.data.lyrics);
         });
     }, [playingTrack]);
-
-    /*
-    / Sets the Access Token whenever the useAuth hook re-states
-    */
-    useEffect(() => {
-        if (!accessToken) return;
-        spotifyApi.setAccessToken(accessToken);
-    }, [accessToken]);
 
     /*
     / Displays the songs/artists which match the search
