@@ -1,4 +1,4 @@
-import '../../../css/home.css'
+import '../../../../css/home.css'
 import useSpotifyGroups from './useSpotifyGroups'
 
 const Home = () => {
@@ -54,7 +54,5 @@ const getGroupAvatar = (group) => {
     }
     return avatarImg;
 }
-
-
 
 export default Home

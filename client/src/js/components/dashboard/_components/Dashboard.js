@@ -2,17 +2,17 @@ import { useState, useEffect } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import axios from 'axios'
 
-import useAuth from '../login/useAuth'
+import useAuth from '../../login/useAuth'
 import TrackSearchResult from './TrackSearchResult'
 import Player from './Player'
-import Home from './Home'
-import Profile from './Profile'
-import useSearchResults from './useSearchResults'
-import useShowDashContent from './useShowDashContent'
-import useSpotifyWebApi from './useSpotifyWebApi'
+import Home from '../home/Home'
+import Profile from '../profile/Profile'
+import useSearchResults from '../_hooks/useSearchResults'
+import useShowDashContent from '../_hooks/useShowDashContent'
+import useSpotifyWebApi from '../_hooks/useSpotifyWebApi'
 
 
-import '../../../css/dashboard.css'
+import '../../../../css/dashboard.css'
 
 const Dashboard = ({ code }) => {
     const accessToken = useAuth(code);
@@ -109,13 +109,13 @@ const Dashboard = ({ code }) => {
                 {showNavBar && 
                     <div className="btn-group fade-in-anm">
                         <div className="mx-2 my-3 nav-btn" onClick={displayHome}>
-                            <img src={require('../../../assets/home.png')} className="nav-img"/>
+                            <img src={require('../../../../assets/home.png')} className="nav-img"/>
                         </div>
                         <div className="mx-2 my-3 nav-btn" onClick={displayProfile}>
-                        <img src={require('../../../assets/user.png')} className="nav-img"/>
+                        <img src={require('../../../../assets/user.png')} className="nav-img"/>
                         </div>
                         <div className="mx-2 my-3 nav-btn" onClick={displayLyrics}>
-                            <img src={require('../../../assets/song-lyrics.png')} className="nav-img"/>
+                            <img src={require('../../../../assets/song-lyrics.png')} className="nav-img"/>
                         </div>
                     </div>
                 }

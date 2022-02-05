@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import useIsTrackPlaying from './useIsTrackPlaying';
+import useIsTrackPlaying from '../_hooks/useIsTrackPlaying';
 import usePlaylistContent from './usePlaylistContent';
 
-import '../../../css/animations/playlist-content-loading.css'
-import '../../../css/animations/pre-playlist-select.css'
+import '../../../../css/animations/playlist-content-loading.css'
+import '../../../../css/animations/pre-playlist-select.css'
 
 const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTrack, userInfo }) => {
     const playlistContent = usePlaylistContent(accessToken, selectedPlaylist?.tracks.href);
@@ -122,7 +122,7 @@ const PlaylistTrack = ({ item, chooseTrack, playingTrack }) => {
                 <>
                 <div className="shaker playlist-track-music-note" style={{ marginRight: '30px' }}>
                     <div className="avatar">
-                        <img src={require('../../../assets/musical-note.png')} />
+                        <img src={require('../../../../assets/musical-note.png')} />
                     </div>
                 </div>
                 </>

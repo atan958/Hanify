@@ -3,7 +3,7 @@ import useUserProfile from "./useUserProfile";
 import useUserPlaylists from "./useUserPlaylists";
 import PlaylistContent from "./PlaylistContent";
 
-import '../../../css/profile.css'
+import '../../../../css/profile.css'
 
 const Profile = ({ accessToken, chooseTrack, playingTrack }) => {
     const userProfile = useUserProfile(accessToken);
