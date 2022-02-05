@@ -6,7 +6,7 @@ import usePlaylistContent from './usePlaylistContent';
 import '../../../css/animations/playlist-content-loading.css'
 import '../../../css/animations/pre-playlist-select.css'
 
-const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, playingTrack, userInfo }) => {
+const PlaylistContent = ({ accessToken, selectedPlaylist, chooseTrack, playingTrack, userInfo }) => {
     const playlistContent = usePlaylistContent(accessToken, selectedPlaylist?.tracks.href);
     const [loadingContent, setLoadingContent] = useState(false);
     
@@ -90,7 +90,7 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
                         return (
                             <PlaylistTrack 
                                 item={item} 
-                                choosePlaylistTrack={choosePlaylistTrack} 
+                                chooseTrack={chooseTrack} 
                                 playingTrack={playingTrack} 
                             />
                         );
@@ -108,11 +108,11 @@ const PlaylistContent = ({ accessToken, selectedPlaylist, choosePlaylistTrack, p
 
 export default PlaylistContent;
 
-const PlaylistTrack = ({ item, choosePlaylistTrack, playingTrack }) => {
+const PlaylistTrack = ({ item, chooseTrack, playingTrack }) => {
     const isTrackPlaying = useIsTrackPlaying(item.track, playingTrack);
 
     return (
-        <div className={`my-1 d-flex p-2 fade-in-anm playlist-item align-items-center ${isTrackPlaying && 'playlist-track-playing'}`} onClick={() => { choosePlaylistTrack(item.track) }}>
+        <div className={`my-1 d-flex p-2 fade-in-anm playlist-item align-items-center ${isTrackPlaying && 'playlist-track-playing'}`} onClick={() => { chooseTrack(item.track) }}>
             <div><img src={item.track.album.images[0].url} style={{ width: '64px', height: '64px'}}/></div>
             <div className="fade-in-anm">
                 <div className="mx-3">{item.track.name}</div>

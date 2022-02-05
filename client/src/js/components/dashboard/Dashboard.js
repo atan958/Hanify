@@ -63,13 +63,16 @@ const Dashboard = ({ code }) => {
             return <TrackSearchResult 
                         track={track} 
                         key={track.uri} 
-                        chooseSearchTrack={chooseSearchTrack} 
+                        chooseTrack={chooseTrack} 
                         displayLyrics={displayLyrics}
                         playingTrack={playingTrack}
                     />
         });
     }
 
+    /*
+    / Displays the lyrics of the currently playing track
+    */
     const renderLyrics = () => {
         return (
             <div className="text-center py-4" style={{ whiteSpace: "pre" }}>
@@ -86,22 +89,9 @@ const Dashboard = ({ code }) => {
     }
 
     /*
-    / Sets the track which cs current playing on the Player component
+    / Sets the currently playing track from any displayed tracks 
     */
-    const chooseSearchTrack = (track) => {
-        searchResults.forEach((track) => {
-            track.playing = false 
-        });
-        track.playing = true;
-        console.log()
-        setPlayingTrack(track);
-    }
-
-    /*
-    /
-    */
-    const choosePlaylistTrack = (track) => {
-        console.log(track);
+    const chooseTrack = (track) => {
         setPlayingTrack(track);
     }
 
@@ -133,7 +123,7 @@ const Dashboard = ({ code }) => {
             <div className="flex-grow-1 my-2 content-container-bg" style={{ overflowY: (showProfile && search.length === 0) ? "hidden" : "auto", overflowX: "hidden" }}>
                 {renderResults()}
                 {(showLyrics && searchResults.length === 0) && ((lyrics.length === 0) ? 'No Song Selected' : (renderLyrics()))}
-                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} choosePlaylistTrack={choosePlaylistTrack} playingTrack={playingTrack}/>}
+                {(showProfile && searchResults.length === 0) && <Profile accessToken={accessToken} chooseTrack={chooseTrack} playingTrack={playingTrack}/>}
                 {(showHome && searchResults.length === 0) && <Home />}
             </div>
             <div>

@@ -5,7 +5,7 @@ import PlaylistContent from "./PlaylistContent";
 
 import '../../../css/profile.css'
 
-const Profile = ({ accessToken, choosePlaylistTrack, playingTrack }) => {
+const Profile = ({ accessToken, chooseTrack, playingTrack }) => {
     const userProfile = useUserProfile(accessToken);
     const userPlaylists = useUserPlaylists(accessToken);
     const [selectedPlaylist, setSelectedPlaylist] = useState();
@@ -23,7 +23,7 @@ const Profile = ({ accessToken, choosePlaylistTrack, playingTrack }) => {
             <PlaylistContent 
                 selectedPlaylist={selectedPlaylist} 
                 accessToken={accessToken} 
-                choosePlaylistTrack={choosePlaylistTrack}
+                chooseTrack={chooseTrack}
                 playingTrack={playingTrack}
                 userInfo={userProfile}
             />

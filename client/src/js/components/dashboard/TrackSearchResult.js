@@ -2,11 +2,11 @@ import useIsTrackPlaying from './useIsTrackPlaying';
 
 import '../../../css/search-result.css'
 
-export default function TrackSearchResult({ track, chooseSearchTrack, displayLyrics, playingTrack }) {
+export default function TrackSearchResult({ track, chooseTrack, displayLyrics, playingTrack }) {
     const isTrackPlaying = useIsTrackPlaying(track, playingTrack);
 
     const handlePlay = () => {
-        chooseSearchTrack(track)
+        chooseTrack(track);
     }
     
     return (
