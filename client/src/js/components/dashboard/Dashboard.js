@@ -68,7 +68,7 @@ const Dashboard = ({ code }) => {
                         track={track} 
                         key={track.uri} 
                         chooseSearchTrack={chooseSearchTrack} 
-                        clearSearch={clearSearch}
+                        displayLyrics={displayLyrics}
                         playingTrack={playingTrack}
                     />
         });
@@ -109,7 +109,7 @@ const Dashboard = ({ code }) => {
     /*
     / 
     */
-    const clearSearch = () => {
+    const displayLyrics = () => {
         setShowLyrics(true);
         setShowHome(false);
         setShowProfile(false);
@@ -149,7 +149,7 @@ const Dashboard = ({ code }) => {
                         <div className="mx-2 my-3 nav-btn" onClick={displayProfile}>
                         <img src={require('../../../assets/user.png')} className="nav-img"/>
                         </div>
-                        <div className="mx-2 my-3 nav-btn" onClick={clearSearch}>
+                        <div className="mx-2 my-3 nav-btn" onClick={displayLyrics}>
                             <img src={require('../../../assets/song-lyrics.png')} className="nav-img"/>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import useIsTrackPlaying from './useIsTrackPlaying';
 
 import '../../../css/search-result.css'
 
-export default function TrackSearchResult({ track, chooseSearchTrack, clearSearch, playingTrack }) {
+export default function TrackSearchResult({ track, chooseSearchTrack, displayLyrics, playingTrack }) {
     const isTrackPlaying = useIsTrackPlaying(track, playingTrack);
 
     const handlePlay = () => {
@@ -27,7 +27,7 @@ export default function TrackSearchResult({ track, chooseSearchTrack, clearSearc
                         <img src={require('../../../assets/musical-note.png')} />
                     </div>
                 </div>
-                <div className="show-lyrics-btn show-lyrics-btn-text-centered" onClick={clearSearch}>LYRICS</div>
+                <div className="show-lyrics-btn show-lyrics-btn-text-centered" onClick={displayLyrics}>LYRICS</div>
                 </>
             )} 
         </div>

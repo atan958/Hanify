@@ -41,7 +41,6 @@ const useSearchResults = (search, accessToken, spotifyApi) => {
         return (() => cancel = true);
     }, [search, accessToken]);
 
-
   return searchResults;
 };
 
